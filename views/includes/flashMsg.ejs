@@ -1,14 +1,13 @@
 <% if (locals.success && locals.success.length) { %>
       <div class="alert alert-success col-6 offset-3 alert-dismissible fade show mt-3" role="alert">
-            <b><%= success %></b>
+            <b><%= locals.success %></b>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
 <% } %>
 
-
 <% if (locals.error && locals.error.length) { %>
       <div class="alert alert-danger col-6 offset-3 alert-dismissible fade show mt-3" role="alert">
-            <b><%= error %></b>
+            <b><%= locals.error %></b>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
 <% } %>
