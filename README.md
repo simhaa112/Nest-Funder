@@ -21,7 +21,7 @@ Nest Finder is a rental listings platform built using the MENB stack (MongoDB, E
 - ⭐ Reviews & Ratings System
 
 ## 🔗 Live Demo
-[https://nest-funder-1.onrender.com](https://nest-funder-1.onrender.com)
+http://localhost:3000/listings
 
 ## 👤 About Me – Narasimha Reddy
 
