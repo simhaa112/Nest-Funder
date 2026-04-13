@@ -35,7 +35,7 @@
           <% } %>
 
           <!-- Booking Section -->
-          <% if (locals.curUser && (!listing.owner || !locals.curUser._id.equals(listing.owner._id))) { %>
+          <% if (curUser && (!listing.owner || !curUser._id.equals(listing.owner._id))) { %>
             <hr class="my-4">
             <h5 class="mb-3">Book This Listing</h5>
             <form id="bookingForm" class="mb-3">
@@ -50,7 +50,7 @@
           <% } %>
 
           <!-- Owner Edit/Delete -->
-          <% if (locals.curUser && locals.curUser._id.equals(listing.owner._id)) { %>
+          <% if (curUser && curUser._id.equals(listing.owner._id)) { %>
             <div class="d-flex gap-3 mt-4">
               <form action="/listings/<%= listing.id %>/edit">
                 <button class="btn btn-outline-secondary">Edit</button>
@@ -65,7 +65,7 @@
     </div>
 
     <!-- Review Form -->
-    <% if (locals.curUser) { %>
+    <% if (curUser) { %>
       <div class="row justify-content-center mb-5">
         <div class="col-lg-8">
           <hr class="mb-4">
@@ -137,7 +137,7 @@
               </div>
 
               <!-- Delete Review -->
-              <% if (locals.curUser && locals.curUser._id.equals(review.author._id)) { %>
+              <% if (curUser && curUser._id.equals(review.author._id)) { %>
                 <form action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=delete" method="POST">
                   <button class="btn btn-sm btn-outline-danger w-100">Delete</button>
                 </form>
@@ -201,8 +201,8 @@
               }
             },
             prefill: {
-              name: "<%= locals.curUser ? locals.curUser.username : '' %>",
-              email: "<%= locals.curUser ? locals.curUser.email : '' %>",
+              name: "<%= curUser ? curUser.username : '' %>",
+              email: "<%= curUser ? curUser.email : '' %>",
             },
             theme: { color: "#3399cc" },
           };

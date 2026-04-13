@@ -131,11 +131,11 @@
 
                   <!-- Auth Buttons -->
                   <div class="navbar-nav d-flex align-items-center gap-2">
-                        <% if (!locals.curUser) { %>
+                        <% if (!curUser) { %>
                               <a class="nav-link" href="/login">Login</a>
                               <a class="nav-link" href="/signup">Signup</a>
                         <% } %>
-                        <% if (locals.curUser) { %>
+                        <% if (curUser) { %>
                               <a class="nav-link" href="/logout">Logout</a>
                         <% } %>
                   </div>
