@@ -115,3 +115,10 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
 });
+
+app.get("/seed-now", async (req, res) => {
+  const sampleListings = [ /* paste your listings array here */ ];
+  await Listing.deleteMany({});
+  await Listing.insertMany(sampleListings);
+  res.send("✅ Database seeded!");
+});
