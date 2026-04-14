@@ -1,6 +1,5 @@
 const Listing = require("../models/listing.js");
 const Review = require("../models/review.js");
-const Fuse = require("fuse.js");
 
 // Show all listings with search & category filter
 module.exports.Index = async (req, res) => {
@@ -35,34 +34,6 @@ module.exports.Index = async (req, res) => {
         console.log(err);
         req.flash("error", "Failed to load listings.");
         res.redirect("/");
-    }
-};
-
-// Get autocomplete suggestions for the search input
-module.exports.searchSuggestions = async (req, res) => {
-    try {
-        const { q, category } = req.query;
-        const searchText = q ? q.trim() : "";
-        if (!searchText) {
-            return res.json([]);
-        }
-
-        const filter = category && category !== "All" ? { category } : {};
-        const listings = await Listing.find(filter).select("title location category").lean();
-
-        const fuse = new Fuse(listings, {
-            keys: ["title", "location", "category"],
-            threshold: 0.45,
-            ignoreLocation: true,
-            includeScore: true,
-            shouldSort: true,
-        });
-
-        const suggestions = fuse.search(searchText).slice(0, 6).map((result) => result.item);
-        res.json(suggestions);
-    } catch (err) {
-        console.log(err);
-        res.status(500).json([]);
     }
 };
 

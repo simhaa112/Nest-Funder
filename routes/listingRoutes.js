@@ -23,9 +23,6 @@ router
 // Render form to create a new listing
 router.get("/new", isLoggedIn, listingController.renderNewForm);
 
-// Autocomplete suggestions for AI search
-router.get("/suggestions", wrapAsync(listingController.searchSuggestions));
-
 // Routes for specific listing by id
 router
   .route("/:id")
